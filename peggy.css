@@ -1,0 +1,202 @@
+*
+{
+    background: rgb(16, 11, 59);
+}
+
+body
+{
+    display: flex;
+}
+
+.center
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 651px;
+}
+
+.lefttable
+{
+    width: 230px;
+    height: 289px;
+    border-radius: 50px;
+    background-color: rgb(16, 11, 59);
+    box-shadow: 20px 20px 60px #000000,
+    -20px -20px 60px #5e5d5d;
+    position: relative;
+    top: 150px;
+    display: flex;
+}
+
+#stack
+{
+    width: 160px;
+    height: 230px;
+    position: relative;
+    top: 27px;
+    left: 33px;
+    border-radius: 10px;
+    z-index: 998; 
+}
+
+#stackmove
+{
+    width: 160px;
+    height: 230px;
+    position: absolute;
+    top: 27px;
+    left: 33px;
+    border-radius: 10px;
+    z-index: 999; 
+}
+
+.allcards
+{
+    transform: rotateY(90deg);
+    width: 160px;
+    height: 230px;
+    position: absolute;
+    top: 27px;
+    left: 33px;
+    border-radius: 10px;
+    z-index: 998;  
+}
+
+#ha2
+{
+    transform: rotateY(90deg);
+    width: 160px;
+    height: 230px;
+    position: absolute;
+    top: 27px;
+    left: 33px;
+    border-radius: 10px;
+    z-index: 998;  
+}
+
+#cardfront
+{
+    transform: rotateY(90deg);
+    width: 160px;
+    height: 230px;
+    position: absolute;
+    top: 27px;
+    left: 33px;
+    border-radius: 10px;
+    z-index: 998;  
+}
+
+.toptable
+{
+    width: 550px;
+    height: 210px;
+    border-radius: 50px;
+    position: absolute;
+    float: right ;
+    background-color: rgb(34, 29, 80);
+    background-color: rgb(30, 25, 80);
+    box-shadow: 6px 6px 10px #000000,
+    -6px -6px 10px #c0bdbd;
+    top: 5px;
+    right: 30%;
+}
+
+.midtable
+{
+    width: 550px;
+    height: 210px;
+    border-radius: 50px;
+    position: absolute;
+    float: right ;
+    background-color: transparent;
+    background-color: rgb(65, 60, 114);
+    box-shadow: 6px 6px 10px #000000,
+    -6px -6px 10px #cac7c7;
+    top:235px;
+    right: 30%;
+    
+}
+
+.bottomtable
+{
+    width: 550px;
+    height: 210px;
+    border-radius: 50px;
+    position: absolute;
+    float: right ;
+    background-color: rgb(30, 25, 80);
+    box-shadow: 6px 6px 10px #000000,
+    -6px -6px 10px #8b8a8a;
+  
+    top: 465px;
+    right: 30%;
+}
+
+.peggy_back
+{
+    width: 130px;
+    height: 210px;
+    padding-top: 20px;
+    padding-left: 25px;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
+}
+
+.slt
+{
+    width: 170;
+    height: 190px;
+    top: 10px;
+    display: flex;
+    position:absolute;
+    box-shadow: 0px 0px 0px #0e0e0e, 
+    0px 0px 0px rgb(95 94 94 / 25%),
+    inset 1.5px 1.5px 3px #0e0e0e, 
+    inset -1.5px -1.5px 3px #5f5e5e;
+}
+
+.slot1{
+    width: 170;
+    height: 190px;
+    left:30px;
+}
+
+.slot2{
+    left: 220px;
+}
+
+.slot3{
+    left: 420px;
+}
+
+/*
+#sp2{
+    width: 160px;
+    height: 230px;
+    position: relative;
+    top: 27px;
+    left: 33px;
+    border-radius: 10px;
+    z-index: 999;
+}
+
+#sp3{
+    width: 160px;
+    height: 230px;
+    position: relative;
+    top: 27px;
+    left: 33px;
+    border-radius: 10px;
+    z-index: 999;
+}
+*/
+
+
+
+
+
+
+
+
+
