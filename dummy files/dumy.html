@@ -1,65 +1,44 @@
-
-<!--to move an object arround with the mouse -->
-<!--<!DOCTYPE html>
-<html>
-<head>
-    <title>Move Objects in Div</title>
-    <style>
-        #container {
-            width: 400px;
-            height: 400px;
-            border: 1px solid black;
-            position: relative;
-        }
-        
-        .movable-object {
-            width: 50px;
-            height: 50px;
-            background-color: red;
-            position: absolute;
-        }
-    </style>
-</head>
-<body>
-    <div id="container">
-        <div class="movable-object"></div>
-    </div>
-
-    <script src="dummy.js"></script>
-</body>
-</html>-->
-
-<!--to move object from one div to another -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Move Element Between Divs</title>
-    <style>
-        #container1, #container2 {
-            width: 200px;
-            height: 200px;
-            border: 1px solid black;
-            margin-bottom: 20px;
-        }
-        
-        .movable-element {
-            width: 50px;
-            height: 50px;
-            background-color: red;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .drag-container {
+      width: 400px;
+      height: 300px;
+      border: 1px solid #000;
+      margin: 10px;
+      padding: 10px;
+      display: inline-block;
+    }
+    #image1 {
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      cursor: move;
+    }
+    #image2 {
+      width: 100px;
+      height: 100px;
+      background-color: #cd1818;
+      cursor: move;
+    }
+    .dragging {
+      opacity: 0.5;
+    }
+  </style>
 </head>
 <body>
-    <div id="container1">
-        <div class="movable-element"></div>
-    </div>
-
-    <div id="container2"></div>
-
-    <script src="dummy.js"></script>
+  <div id="source" class="drag-container">
+    <div id="image1" class="image" draggable="true"></div>
+    <div id="image2" class="image" draggable="true"></div>
+  </div>
+  
+  <div id="target" class="drag-container"></div>
+  <script type="text/javascript" src="dummy.js"></script>
+  
 </body>
 </html>
-
-
-
-

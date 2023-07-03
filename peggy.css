@@ -3,6 +3,53 @@
     background: rgb(16, 11, 59);
 }
 
+#shuffle{
+    background-color: rgb(52, 25, 150);
+    font-size: 40px;
+    position: absolute;
+    top: 50px;
+    border-radius: 20%;
+    color: rgb(179, 209, 235);
+    box-shadow: 6px 9px 10px #000000,
+    -6px -9px 10px #cac7c7;
+}
+
+#stani{
+    background-color: rgb(52, 25, 150);
+    font-size: 40px;
+    position: absolute;
+    top: 5px;
+    border-radius: 20%;
+    color: rgb(179, 209, 235);
+    box-shadow: 6px 9px 10px #000000,
+    -6px -9px 10px #cac7c7;
+}
+
+#shuffle:hover{
+    box-shadow: 20px 20px 60px #000000,
+    -20px -15px 40px #eeeded;
+     font-size: 55px;
+     top: 0px;
+     background-color: rgb(22, 144, 148);
+}
+
+#stani:hover{
+    box-shadow: 20px 20px 60px #000000,
+    -20px -15px 40px #eeeded;
+     font-size: 55px;
+     top: 0px;
+     background-color: rgb(22, 144, 148);
+}
+
+#startbutton{
+    background-color: #467ef7;
+    height: 4px;
+    width: 90px;
+    position: absolute;
+    top: 0px;
+    left: 20px;
+}
+
 body
 {
     display: flex;
@@ -16,7 +63,7 @@ body
     height: 651px;
 }
 
-.lefttable
+#lefttable
 {
     width: 230px;
     height: 289px;
@@ -29,6 +76,53 @@ body
     display: flex;
 }
 
+#toptable
+{
+    width: 615px;
+    height: 210px;
+    border-radius: 50px;
+    position: absolute;
+    float: right ;
+    background-color: rgb(34, 29, 80);
+    background-color: rgb(30, 25, 80);
+    box-shadow: 6px 6px 10px #000000,
+    -6px -6px 10px #c0bdbd;
+    top: 5px;
+    right: 30%;
+    display: flex;
+}
+
+#midtable
+{
+    width: 615px;
+    height: 210px;
+    border-radius: 50px;
+    position: absolute;
+    float: right ;
+    background-color: transparent;
+    background-color: rgb(65, 60, 114);
+    box-shadow: 6px 6px 10px #000000,
+    -6px -6px 10px #cac7c7;
+    top:235px;
+    right: 30%;
+    
+}
+
+#bottomtable
+{
+    width: 615px;
+    height: 210px;
+    border-radius: 50px;
+    position: absolute;
+    float: right ;
+    background-color: rgb(30, 25, 80);
+    box-shadow: 6px 6px 10px #000000,
+    -6px -6px 10px #8b8a8a;
+  
+    top: 465px;
+    right: 30%;
+}
+
 #stack
 {
     width: 160px;
@@ -37,7 +131,18 @@ body
     top: 27px;
     left: 33px;
     border-radius: 10px;
-    z-index: 998; 
+    z-index: 1000000; 
+}
+
+.stack
+{
+    width: 160px;
+    height: 230px;
+    position: absolute;
+    top: 27px;
+    left: 33px;
+    border-radius: 10px;
+    z-index: 999; 
 }
 
 #stackmove
@@ -87,52 +192,6 @@ body
     z-index: 998;  
 }
 
-.toptable
-{
-    width: 550px;
-    height: 210px;
-    border-radius: 50px;
-    position: absolute;
-    float: right ;
-    background-color: rgb(34, 29, 80);
-    background-color: rgb(30, 25, 80);
-    box-shadow: 6px 6px 10px #000000,
-    -6px -6px 10px #c0bdbd;
-    top: 5px;
-    right: 30%;
-}
-
-.midtable
-{
-    width: 550px;
-    height: 210px;
-    border-radius: 50px;
-    position: absolute;
-    float: right ;
-    background-color: transparent;
-    background-color: rgb(65, 60, 114);
-    box-shadow: 6px 6px 10px #000000,
-    -6px -6px 10px #cac7c7;
-    top:235px;
-    right: 30%;
-    
-}
-
-.bottomtable
-{
-    width: 550px;
-    height: 210px;
-    border-radius: 50px;
-    position: absolute;
-    float: right ;
-    background-color: rgb(30, 25, 80);
-    box-shadow: 6px 6px 10px #000000,
-    -6px -6px 10px #8b8a8a;
-  
-    top: 465px;
-    right: 30%;
-}
-
 .peggy_back
 {
     width: 130px;
@@ -143,31 +202,50 @@ body
     border-top-left-radius: 40px;
 }
 
-.slt
-{
-    width: 170;
-    height: 190px;
-    top: 10px;
-    display: flex;
-    position:absolute;
-    box-shadow: 0px 0px 0px #0e0e0e, 
-    0px 0px 0px rgb(95 94 94 / 25%),
-    inset 1.5px 1.5px 3px #0e0e0e, 
-    inset -1.5px -1.5px 3px #5f5e5e;
-}
-
-.slot1{
-    width: 170;
+#slot1{
+    width: 170px;
     height: 190px;
     left:30px;
+    top: 5px;
+    position: absolute;
 }
 
-.slot2{
-    left: 220px;
+#slot2{
+    width: 170px;
+    height: 190px;
+    left: 210px;
+    top: 5px;
+    position: absolute;
 }
 
-.slot3{
-    left: 420px;
+#slot3{
+    width: 170px;
+    height: 190px;
+    left: 390px;
+    top: 5px;
+    position: absolute;}
+
+.car{
+    width: 100px;
+}
+
+#testrun1, #testrun2{
+    width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            margin-bottom: 20px;
+}
+
+.movable{
+    width: 50px;
+            height: 50px;
+            background-color: red;
+}
+
+#clickme{
+    width: 100px;
+    height: 100px;
+    background-color: #cac7c7;
 }
 
 /*

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .drag-container {
+      width: 400px;
+      height: 300px;
+      border: 1px solid #000;
+      margin: 10px;
+      padding: 10px;
+      display: inline-block;
+    }
+    #image1 {
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      cursor: move;
+    }
+    #image2 {
+      width: 100px;
+      height: 100px;
+      background-color: #cd1818;
+      cursor: move;
+    }
+    .dragging {
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <div id="source" class="drag-container">
+    <div id="image1" class="image" draggable="true"></div>
+    <div id="image2" class="image" draggable="true"></div>
+  </div>
+  
+  <div id="target" class="drag-container"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const source = document.getElementById("source");
+      const target = document.getElementById("target");
+      let currentDraggedElementId = null;
+
+      // Add event listeners to the draggable images
+      const images = source.querySelectorAll(".image");
+      images.forEach(function(image) {
+        image.addEventListener("dragstart", function(event) {
+          // Set the data that will be transferred during the drag
+          event.dataTransfer.setData("text/plain", event.target.id);
+          // Add a CSS class to the dragged image for styling
+          event.target.classList.add("dragging");
+          // Set the current dragged element ID
+          currentDraggedElementId = event.target.id;
+        });
+
+        image.addEventListener("dragend", function(event) {
+          // Remove the CSS class from the dragged image
+          event.target.classList.remove("dragging");
+          // Reset the current dragged element ID
+          currentDraggedElementId = null;
+        });
+      });
+
+      // Add event listeners to the drop target
+      target.addEventListener("dragover", function(event) {
+        event.preventDefault();
+      });
+
+      target.addEventListener("drop", function(event) {
+        event.preventDefault();
+        // Get the ID of the dragged image from the data transfer
+        const imageId = event.dataTransfer.getData("text/plain");
+        // Append the dragged image to the target div
+        const draggedImage = document.getElementById(imageId);
+        target.appendChild(draggedImage);
+        // Log the ID of the dragged image
+        console.log("Dragged element ID:", imageId);
+      });
+
+      // Add event listener to track the current dragged element
+      document.addEventListener("drag", function(event) {
+        if (currentDraggedElementId) {
+          console.log("Currently dragging:", currentDraggedElementId);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
