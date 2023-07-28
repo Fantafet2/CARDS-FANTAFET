@@ -1,5 +1,5 @@
 /*  TO DO LIST
-//  *   get the properties of the card selected to move were it is placed
+*   get the properties of the card selected to move were it is placed
 //  *   fix alingment
 
 *   check if the move is valid
@@ -33,10 +33,14 @@
 
 */
 /**********CURENTLY WORKING ON****************//*
-    WORKING:    for some reason the lessen_p2deck has stopped working
-                * first the index of the card being taken out has stopped working 
-                * after the second (sometimes the first) one has been taken out it stops taken them out
-                * the reason why it stops is because the index of the thing is coming up as one which is not there
+    WORKING:    trying to add the extra card backs to the player 2 hand using the length of the 
+                amount that is already in the pack
+
+                so if there is 3 cards up there you search through the array with them until you find 
+                the card back with the number 4 and then add that to the top
+
+                print the array with the cards it should start at 4 because the original set are taken out at the start 
+                so just check
 
     FUNCTION:   lessen_p2deck()
     
@@ -198,7 +202,8 @@ var bspin = 0;
 // returns th e cards to the deck
 function emptypack(){ 
     let whilenum = 0;
-
+    console.log('======================================')
+    console.log('======================================')
     while(whilenum < 1){
         
         const tkout = slt1[0];
@@ -231,25 +236,14 @@ function emptypack(){
         if(slt3.length <= 2){
             whilenum++;
         }
-    }  
+    }
+    
+    
 }
 
 // the positioning for player 2 after a card is drawn
 function p2drawmechanics(p2newpick){
     let currentpos;
-
-    for(i = 0; i < p2cardback.length; i++){
-        currentpos = p2cardback[i].at(0).style.left;
-        let n = currentpos[0];
-        let e = currentpos[1];
-        let w = currentpos[2];
-        let newpositon = n+e+w;
-    
-        let updatenew = newpositon-0-newpositon*0.11;
-
-        p2cardback[i].at(0).style.left = updatenew + 'px';
-       
-    }
 
     for(i = 0; i < player2.length; i++){
         currentpos = player2[i].at(0).style.left;
@@ -264,29 +258,20 @@ function p2drawmechanics(p2newpick){
        
     }
 
-    //z-index
-    player2[player2.length-1].at(0).style.zIndex = "1"    
-    p2cardback[p2cardback.length-1].at(0).style.zIndex = "1000"    
-
-    //left
-    player2[player2.length-1].at(0).style.left= "460px";
-    p2cardback[p2cardback.length-1].at(0).style.left= "460px";
-
-    //top
-    player2[player2.length-1].at(0).style.top= "25px";
-    p2cardback[p2cardback.length-1].at(0).style.top= "25px";
-
-    //height
-    player2[player2.length-1].at(0).style.height= "160px";
-    p2cardback[p2cardback.length-1].at(0).style.height= "165px";
-
-    //width
-    player2[player2.length-1].at(0).style.width= "140px";
-    p2cardback[p2cardback.length-1].at(0).style.width= "140px";
-
-    //rotate
-    player2[player2.length-1].at(0).style.transform= 'rotateY(0deg)';
-    p2cardback[p2cardback.length-1].at(0).style.transform= 'rotateY(0deg)';
+        //left
+        player2[player2.length-1].at(0).style.left= "460px";
+    
+        //top
+        player2[player2.length-1].at(0).style.top= "25px";
+    
+        //height
+        player2[player2.length-1].at(0).style.height= "160px";
+    
+        //width
+        player2[player2.length-1].at(0).style.width= "140px";
+    
+        //rotate
+        player2[player2.length-1].at(0).style.transform= 'rotateY(0deg)';
 }
 
 // the positioning for player 1 after a card is drawn
@@ -322,32 +307,34 @@ function p1drawmechanics(p1newpick){
     player1[player1.length-1].at(0).style.transform= 'rotateY(0deg)';
 
 }
- 
+
+function toptab_append(){
+    let add_back;
+    console.log('atleast it reaches here =')
+    for(i = 0; i <= p2cardpack; i++){
+        add_back = p2cardpack[i];
+
+        if(add_back[1] == p2cardpack.lenght-1){
+            console.log('on the right track')
+        }
+
+    }
+}
 
 // pulling a card from the pack for player 2
 function p2anotherrandpick(){
 
     let randpick = cardpack[Math.floor(Math.random()*cardpack.length)];
-    let topappend = p2cardpack[p2cardpack.length-1];
 
-    p2cardback.push(topappend);
     //toptab_append()
-    
     toptab.appendChild(randpick.at(0));
-    toptab.appendChild(topappend.at(0));
 
     const tkout = cardpack.indexOf(randpick);
     if (tkout > -1) { // only splice array when item is found
         cardpack.splice(tkout, 1); // 2nd parameter means remove one item only
     }
-    
-    const tkoutback = p2cardpack.indexOf(topappend);
-    if (tkoutback > -1) { // only splice array when item is found
-        p2cardpack.splice(tkoutback, 1); // 2nd parameter means remove one item only
-    }
 
-    p2drawmechanics(topappend);
-   // return randpick;
+    return randpick;
 }
 
 // pulling a card from the pack for player 1
@@ -366,12 +353,12 @@ function p1anotherrandpick(){
 
 // starting function to draw a card
 function p2drawanothercard(){
-/*
+
     let p2newpick = p2anotherrandpick();
     player2.push(p2newpick);
-*/
-    p2anotherrandpick();
-    p2drawmechanics();
+
+    p2drawmechanics(p2newpick);
+
 }
 
 // starting function to draw a card
@@ -388,35 +375,24 @@ function p2_move_back_mchanics(temp_back_move_back){
     temp_back_move_back.style.left = '25px';
 };
 
-function lessen_p2deck(tkout_index){
+function lessen_p2deck(){
     let val = 1
     let temp_move_back;
-    console.log('the lessen pack is working')
 
-    temp_move_back = p2cardback[tkout_index];
+    temp_move_back = p2cardback[p2cardback.length-val];
     console.log(temp_move_back)
 
 
     lefttab.appendChild(temp_move_back[0]);
-
     p2_move_back_mchanics(temp_move_back[0]);
-    p2cardback.splice(temp_move_back, 1);
-    //temp_move_back = p2cardback[p2cardback.length-val];
+    p2cardback.pop();
+    temp_move_back = p2cardback[p2cardback.length-val];
 
-}; 
+};                
 
-function print_p2(){
-    for(i = 0; i < player2.length; i++)
-    {
-        console.log(player2[i][1]);
-    }
-    console.log('=================')
-}
 
 // controls the moves the computer makes
 function aiplay(slot,slotposition){
-
-    print_p2();
     for(i = 0; i < player2.length; i++){
 
         if( player2[i][1] === slt1[slt1.length-1][1]+1 ||
@@ -428,13 +404,13 @@ function aiplay(slot,slotposition){
                     midtableformat(player2[i][0]);
 
                     const tkout = player2.indexOf(player2[i]);
-                    console.log('this is the index', tkout);
-                    lessen_p2deck(tkout);                
-
                     if (tkout > -1) { // only splice array when item is found
                         player2.splice(tkout, 1); // 2nd parameter means remove one item only
                     }
+                    
+                    //console.log('after the move',player2[i][1])
 
+                    //lessen_p2deck();                
                     checkifwin();   
                     break;                                 
             }
@@ -447,13 +423,13 @@ function aiplay(slot,slotposition){
                     midtableformat(player2[i][0]);
 
                     const tkout = player2.indexOf(player2[i]);
-                    console.log('this is the index', tkout);
-                    lessen_p2deck(tkout);                
-
                     if (tkout > -1) { // only splice array when item is found
                         player2.splice(tkout, 1); // 2nd parameter means remove one item only
                     }
+                    
+                    //console.log('after the move',player2[i][1])
 
+                    //lessen_p2deck();                
                     checkifwin();
                     break;
             
@@ -461,18 +437,17 @@ function aiplay(slot,slotposition){
             else if(player2[i][1] === slt3[slt3.length-1][1]+1 ||
                player2[i][1] === slt3[slt3.length-1][1]-1){
 
+                //console.log('before the move', player2[i][1]);
                 slt3.push(player2[i]);
                 slot3.appendChild(player2[i][0]);
                 midtableformat(player2[i][0]);
 
                 const tkout = player2.indexOf(player2[i]);
-                console.log('this is the index', tkout);
-                lessen_p2deck(tkout);                
-
                 if (tkout > -1) { // only splice array when item is found
                     player2.splice(tkout, 1); // 2nd parameter means remove one item only
                 }
 
+                //lessen_p2deck();                
                 checkifwin();
                 break; 
             }
@@ -486,11 +461,7 @@ function aiplay(slot,slotposition){
         if(cardpack.length === 0){
             emptypack();
         };
-        
    }
-
-   print_p2();
-
 }
 
 // screen for the winner 
@@ -634,6 +605,37 @@ function isvalidmove(slot, draggedImage, slotposition){
     }
 };
 
+function rotatep2(){
+    let rotp2s2 = 90;
+    let rotp2back = 0;
+
+    var p2_start_back_rotate = setInterval(function(){
+        rotp2back++;
+
+        stkimg1.style.transform = 'rotateY(' + rotp2back + 'deg)'
+        stkimg2.style.transform = 'rotateY(' + rotp2back + 'deg)'
+        stkimg3.style.transform = 'rotateY(' + rotp2back + 'deg)'
+        stkimg4.style.transform = 'rotateY(' + rotp2back + 'deg)'
+
+        if(rotp2back === 90){
+            clearInterval(p2_start_back_rotate);
+
+            var reveal_p2_start_cards = setInterval(function(){
+                rotp2s2--;
+
+                player2[0][0].style.transform = 'rotateY(' + rotp2s2 + 'deg)'
+                player2[1][0].style.transform = 'rotateY(' + rotp2s2 + 'deg)'
+                player2[2][0].style.transform = 'rotateY(' + rotp2s2 + 'deg)'
+                player2[3][0].style.transform = 'rotateY(' + rotp2s2 + 'deg)'
+
+                if(rotp2s2 === 0){
+                    clearInterval(reveal_p2_start_cards);
+                }
+            },1)
+        }
+    },1)
+}
+
 // rotates the cards in player 1's hand 
 function rotatep1(){
     let rotp1s1 = 90;
@@ -744,6 +746,7 @@ function mechanics(plyrnum){
     player2[3].at(0).style.width= "140px";
 
     //rotate
+    rotatep2();
    /* player2[0].at(0).style.transform= 'rotateY(0deg)';
     player2[1].at(0).style.transform= 'rotateY(0deg)';
     player2[2].at(0).style.transform= 'rotateY(0deg)';
@@ -1011,15 +1014,15 @@ function p2_spread_back_imgs(){
         top_bmove3++;
         top_bmove4++;
 
-        topb0[0].style.left = top_bmove1 + 'px';
-        topb1[0].style.left = top_bmove2 + 'px';
-        topb2[0].style.left = top_bmove3 + 'px';
-        topb3[0].style.left = top_bmove4 + 'px';
+        stkimg1.style.left = top_bmove1 + 'px';
+        stkimg2.style.left = top_bmove2 + 'px';
+        stkimg3.style.left = top_bmove3 + 'px';
+        stkimg4.style.left = top_bmove4 + 'px';
         
-        topb0[0].style.top = '25px';
-        topb1[0].style.top = '25px';
-        topb2[0].style.top = '25px';
-        topb3[0].style.top = '25px';
+        stkimg1.style.top = '25px';
+        stkimg2.style.top = '25px';
+        stkimg3.style.top = '25px';
+        stkimg4.style.top = '25px';
 
         if(top_bmove1 === 10){
             clearInterval(spread_cards_2);
@@ -1029,9 +1032,9 @@ function p2_spread_back_imgs(){
                 top_bmove3++;
                 top_bmove4++;
 
-                topb1[0].style.left = top_bmove2 + 'px';
-                topb2[0].style.left = top_bmove3 + 'px';
-                topb3[0].style.left = top_bmove4 + 'px';
+                stkimg2.style.left = top_bmove2 + 'px';
+                stkimg3.style.left = top_bmove3 + 'px';
+                stkimg4.style.left = top_bmove4 + 'px';
 
                 if(top_bmove2 === 160){
                     clearInterval(spread_cards_3)
@@ -1040,8 +1043,8 @@ function p2_spread_back_imgs(){
                         top_bmove3++;
                         top_bmove4++;
 
-                        topb2[0].style.left = top_bmove3 + 'px';
-                        topb3[0].style.left = top_bmove4 + 'px';
+                        stkimg3.style.left = top_bmove3 + 'px';
+                        stkimg4.style.left = top_bmove4 + 'px';
 
                         if(top_bmove3 === 310){
                             clearInterval(spread_cards_4)
@@ -1049,7 +1052,7 @@ function p2_spread_back_imgs(){
                             var spread_cards_5 = setInterval(function(){
                                 top_bmove4++;
 
-                                topb3[0].style.left = top_bmove4 + 'px';
+                                stkimg4.style.left = top_bmove4 + 'px';
 
                                 if(top_bmove4 === 460){
                                     clearInterval(spread_cards_5)
@@ -1063,10 +1066,6 @@ function p2_spread_back_imgs(){
 
     },1)
 
-    p2cardpack.splice(1,1);
-    p2cardpack.splice(1,1);
-    p2cardpack.splice(1,1);
-    p2cardpack.splice(1,1);
     drawcard();
 }
 
@@ -1078,23 +1077,23 @@ function p2_shrink_moving_start_img(){
         p2_strt_move_height--;
         p2_strt_move_width--;
 
-        topb0[0].style.height = p2_strt_move_height + 'px';
-        topb1[0].style.height = p2_strt_move_height + 'px';
-        topb2[0].style.height = p2_strt_move_height + 'px';
-        topb3[0].style.height = p2_strt_move_height + 'px';
+        stkimg1.style.height = p2_strt_move_height + 'px';
+        stkimg2.style.height = p2_strt_move_height + 'px';
+        stkimg3.style.height = p2_strt_move_height + 'px';
+        stkimg4.style.height = p2_strt_move_height + 'px';
 
-        topb0[0].style.width = p2_strt_move_width + 'px';
-        topb1[0].style.width = p2_strt_move_width + 'px';
-        topb2[0].style.width = p2_strt_move_width + 'px';
-        topb3[0].style.width = p2_strt_move_width + 'px';
+        stkimg1.style.width = p2_strt_move_width + 'px';
+        stkimg2.style.width = p2_strt_move_width + 'px';
+        stkimg3.style.width = p2_strt_move_width + 'px';
+        stkimg4.style.width = p2_strt_move_width + 'px';
 
         if (p2_strt_move_width == 135){
             clearInterval(p2_shrink_card);
             p2_strt_move_height = 165;
-            topb0[0].style.height = p2_strt_move_height + 'PX';
-            topb1[0].style.height = p2_strt_move_height + 'PX';
-            topb2[0].style.height = p2_strt_move_height + 'PX';
-            topb3[0].style.height = p2_strt_move_height + 'PX';
+            stkimg1.style.height = p2_strt_move_height + 'PX';
+            stkimg2.style.height = p2_strt_move_height + 'PX';
+            stkimg3.style.height = p2_strt_move_height + 'PX';
+            stkimg4.style.height = p2_strt_move_height + 'PX';
 
             p2_spread_back_imgs();
         }
@@ -1110,25 +1109,25 @@ function top_back_distribution(){
         topb_ver++;
         topb_ver++;
 
-        topb0[0].style.top = topb_hor + 'px';
-        topb1[0].style.top = topb_hor + 'px';
-        topb2[0].style.top = topb_hor + 'px';
-        topb3[0].style.top = topb_hor + 'px';
+        stkimg1.style.top = topb_hor + 'px';
+        stkimg2.style.top = topb_hor + 'px';
+        stkimg3.style.top = topb_hor + 'px';
+        stkimg4.style.top = topb_hor + 'px';
 
-        topb0[0].style.left = topb_ver + 'px';
-        topb1[0].style.left = topb_ver + 'px';
-        topb2[0].style.left = topb_ver + 'px';
-        topb3[0].style.left = topb_ver + 'px';
+        stkimg1.style.left = topb_ver + 'px';
+        stkimg2.style.left = topb_ver + 'px';
+        stkimg3.style.left = topb_ver + 'px';
+        stkimg4.style.left = topb_ver + 'px';
 
         if(topb_hor === - 181){
             clearInterval(spread_topb);
             let left_top_adjust = setInterval(function(){
                 topb_ver--;
 
-                topb0[0].style.left = topb_ver + 'px';
-                topb1[0].style.left = topb_ver + 'px';
-                topb2[0].style.left = topb_ver + 'px';
-                topb3[0].style.left = topb_ver + 'px';
+                stkimg1.style.left = topb_ver + 'px';
+                stkimg2.style.left = topb_ver + 'px';
+                stkimg3.style.left = topb_ver + 'px';
+                stkimg4.style.left = topb_ver + 'px';
 
                 if(topb_ver = 375){
                     clearInterval(left_top_adjust)
@@ -1138,22 +1137,22 @@ function top_back_distribution(){
                     p2cardback[2] = topb2
                     p2cardback[3] = topb3
 
-                    toptab.appendChild(topb0[0]);
-                    toptab.appendChild(topb1[0]);
-                    toptab.appendChild(topb2[0]);
-                    toptab.appendChild(topb3[0]);
+                    toptab.appendChild(stkimg1);
+                    toptab.appendChild(stkimg2);
+                    toptab.appendChild(stkimg3);
+                    toptab.appendChild(stkimg4);
 
                     topb_hor = 0,topb_ver = 0;
 
-                    topb0[0].style.top = topb_hor + 'px';
-                    topb1[0].style.top = topb_hor + 'px';
-                    topb2[0].style.top = topb_hor + 'px';
-                    topb3[0].style.top = topb_hor + 'px';
+                    stkimg1.style.top = topb_hor + 'px';
+                    stkimg2.style.top = topb_hor + 'px';
+                    stkimg3.style.top = topb_hor + 'px';
+                    stkimg4.style.top = topb_hor + 'px';
             
-                    topb0[0].style.left = topb_ver + 'px';
-                    topb1[0].style.left = topb_ver + 'px';
-                    topb2[0].style.left = topb_ver + 'px';
-                    topb3[0].style.left = topb_ver + 'px';
+                    stkimg1.style.left = topb_ver + 'px';
+                    stkimg2.style.left = topb_ver + 'px';
+                    stkimg3.style.left = topb_ver + 'px';
+                    stkimg4.style.left = topb_ver + 'px';
 
                     p2_shrink_moving_start_img();
                 }
@@ -1330,3 +1329,9 @@ function move(){
 
 
 }
+
+
+
+
+
+
