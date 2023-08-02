@@ -347,7 +347,7 @@ function p2anotherrandpick(){
     }
 
     p2drawmechanics(topappend);
-   // return randpick;
+    return randpick;
 }
 
 // pulling a card from the pack for player 1
@@ -366,10 +366,10 @@ function p1anotherrandpick(){
 
 // starting function to draw a card
 function p2drawanothercard(){
-/*
+
     let p2newpick = p2anotherrandpick();
     player2.push(p2newpick);
-*/
+
     p2anotherrandpick();
     p2drawmechanics();
 }
@@ -400,7 +400,11 @@ function lessen_p2deck(tkout_index){
     lefttab.appendChild(temp_move_back[0]);
 
     p2_move_back_mchanics(temp_move_back[0]);
-    p2cardback.splice(temp_move_back, 1);
+    if(tkout_index > -1){
+        p2cardpack[p2cardpack.length] = temp_move_back;
+        p2cardback.splice(temp_move_back, 1);
+    }
+
     //temp_move_back = p2cardback[p2cardback.length-val];
 
 }; 
